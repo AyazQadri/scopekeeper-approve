@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://firestore.googleapis.com; base-uri 'none'; form-action 'self'">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Review request — ScopeKeeper</title>
+  <link rel="stylesheet" href="approve.css">
+  <script src="approve-core.js" defer></script>
+  <script src="approve.js" defer></script>
+</head>
+<body>
+  <main class="container" id="main">
+    <header class="brand"><span class="brand-mark" aria-hidden="true">[✓]</span> ScopeKeeper</header>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <section id="state-loading" class="card center">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Loading request…</p>
+    </section>
+
+    <section id="state-message" class="card" hidden>
+      <h1 id="message-title"></h1>
+      <p id="message-body" class="muted"></p>
+      <button type="button" id="retry" class="btn btn-secondary" hidden>Try again</button>
+    </section>
+
+    <section id="state-review" hidden>
+      <div class="card">
+        <p class="eyebrow" id="review-eyebrow"></p>
+        <h1 id="review-title"></h1>
+        <dl class="meta" id="review-meta"></dl>
+      </div>
+      <div id="review-body"></div>
+
+      <div class="card" id="decided" hidden>
+        <h2>Decision recorded</h2>
+        <p id="decided-summary"></p>
+        <p id="decided-comment" class="quote" hidden></p>
+      </div>
+
+      <form class="card" id="decision-form" novalidate hidden>
+        <h2>Your decision</h2>
+        <div class="field">
+          <label for="signer-name">Your full name</label>
+          <input id="signer-name" name="signerName" type="text" autocomplete="name" maxlength="120" required>
+        </div>
+        <div class="field">
+          <label for="comment">Comment <span class="muted" id="comment-hint">(optional when approving)</span></label>
+          <textarea id="comment" name="comment" rows="4" maxlength="2000"></textarea>
+        </div>
+        <p id="form-error" class="error" role="alert"></p>
+        <p class="notice" id="legal-notice"></p>
+        <div class="actions" id="decision-buttons">
+          <button type="button" class="btn btn-primary" data-decision="approved">Approve</button>
+          <button type="button" class="btn btn-secondary" data-decision="revision_requested">Request revisions</button>
+          <button type="button" class="btn btn-danger" data-decision="rejected">Reject</button>
+        </div>
+        <div class="confirm" id="confirm" hidden>
+          <p id="confirm-text"></p>
+          <div class="actions">
+            <button type="button" class="btn btn-primary" id="confirm-yes">Confirm</button>
+            <button type="button" class="btn btn-secondary" id="confirm-no">Go back</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer muted">Sent with ScopeKeeper</footer>
+  </main>
+</body>
+</html>
